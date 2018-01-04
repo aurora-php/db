@@ -32,8 +32,8 @@ interface IConnection
     /**
      * Resolve a database reference.
      *
-     * @param   \Octris\Db\Type\DbRef                          $dbref      Database reference to resolve.
-     * @return  \Octris\Db\Device\...\DataObject|bool                      Data object or false if reference could not he resolved.
+     * @param   \Octris\Db\Type\DbRef                          $dbref       Database reference to resolve.
+     * @return  \Octris\Db\Type\DataObject|bool                             Data object or false if reference could not he resolved.
      */
     public function resolve(\Octris\Db\Type\DbRef $dbref);
 
@@ -41,7 +41,7 @@ interface IConnection
      * Return instance of collection object.
      *
      * @param   string          $name                               Name of collection to return instance of.
-     * @return  \Octris\Db\Device\...\Collection                    Instance of database collection.
+     * @return  \Octris\Db\Type\Collection                          Instance of database collection.
      */
     public function getCollection($name);
     /**/
