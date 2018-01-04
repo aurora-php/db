@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the 'octris/core' package.
+ * This file is part of the 'octris/db' package.
  *
  * (c) Harald Lapp <harald@octris.org>
  *
@@ -9,12 +9,12 @@
  * file that was distributed with this source code.
  */
 
-namespace Octris\Core\Db;
+namespace Octris\Db;
 
 /**
  * Database devices base class.
  *
- * @copyright   copyright (c) 2012-2014 by Harald Lapp
+ * @copyright   copyright (c) 2012-2018 by Harald Lapp
  * @author      Harald Lapp <harald@octris.org>
  */
 abstract class Device
@@ -25,8 +25,8 @@ abstract class Device
      * @type    array
      */
     protected $hosts = array(
-        \Octris\Core\Db::DB_MASTER => array(),
-        \Octris\Core\Db::DB_SLAVE  => array()
+        \Octris\Db::DB_MASTER => array(),
+        \Octris\Db::DB_SLAVE  => array()
     );
 
     /**
@@ -42,8 +42,8 @@ abstract class Device
      * @type    array
      */
     protected $pool = array(
-        \Octris\Core\Db::DB_MASTER => array(),
-        \Octris\Core\Db::DB_SLAVE  => array()
+        \Octris\Db::DB_MASTER => array(),
+        \Octris\Db::DB_SLAVE  => array()
     );
 
     /**
@@ -64,8 +64,8 @@ abstract class Device
     {
         $this->hosts[$type][] = $options;
 
-        if ($type == \Octris\Core\Db::DB_MASTER && $master_as_slave) {
-            $this->hosts[\Octris\Core\Db::DB_SLAVE][] = $options;
+        if ($type == \Octris\Db::DB_MASTER && $master_as_slave) {
+            $this->hosts[\Octris\Db::DB_SLAVE][] = $options;
         }
     }
 
@@ -73,7 +73,7 @@ abstract class Device
      * Create a new database connection for specified configuration options.
      *
      * @param   array                       $options        Host configuration options.
-     * @return  \Octris\Core\Db\Device\IConnection     Connection to a database.
+     * @return  \Octris\Db\Device\IConnection               Connection to a database.
      */
     abstract protected function createConnection(array $options);
 
@@ -81,11 +81,11 @@ abstract class Device
      * Return a database connection of specified type.
      *
      * @param   string                      $type           Optional type of connection.
-     * @return  \Octris\Core\Db\Device\IConnection     Connection to a database.
+     * @return  \Octris\Db\Device\IConnection               Connection to a database.
      */
-    public function getConnection($type = \Octris\Core\Db::DB_MASTER)
+    public function getConnection($type = \Octris\Db::DB_MASTER)
     {
-        if ($type != \Octris\Core\Db::DB_MASTER && $type != \Octris\Core\Db::DB_SLAVE) {
+        if ($type != \Octris\Db::DB_MASTER && $type != \Octris\Db::DB_SLAVE) {
             throw new \Exception('unknown connection type "' . $type . '"');
         } else {
             if (!($cn = array_shift($this->pool[$type]))) {
@@ -98,8 +98,8 @@ abstract class Device
 
                 $cn = $this->createConnection($this->hosts[$type][0]);
 
-                if (!($cn instanceof \Octris\Core\Db\Device\IConnection)) {
-                    throw new \Exception('connection handler needs to implement interface "\Octris\Core\Db\Device\IConnection"');
+                if (!($cn instanceof \Octris\Db\Device\IConnection)) {
+                    throw new \Exception('connection handler needs to implement interface "\Octris\Db\Device\IConnection"');
                 }
             }
 
@@ -112,9 +112,9 @@ abstract class Device
     /**
      * Release a connection, push it back into the pool.
      *
-     * @param   \Octris\Core\Db\Device\IConnection   $cn     Connection to release to pool.
+     * @param   \Octris\Db\Device\IConnection   $cn     Connection to release to pool.
      */
-    public function release(\Octris\Core\Db\Device\IConnection $cn)
+    public function release(\Octris\Db\Device\IConnection $cn)
     {
         $hash = spl_object_hash($cn);
 

@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the 'octris/core' package.
+ * This file is part of the 'octris/db' package.
  *
  * (c) Harald Lapp <harald@octris.org>
  *
@@ -9,12 +9,12 @@
  * file that was distributed with this source code.
  */
 
-namespace Octris\Core\Db\Type;
+namespace Octris\Db\Type;
 
 /**
  * Iterator for recursive iterating data objects of query results
  *
- * @copyright   copyright (c) 2012-2014 by Harald Lapp
+ * @copyright   copyright (c) 2012-2018 by Harald Lapp
  * @author      Harald Lapp <harald@octris.org>
  */
 class DataIterator implements \Iterator
@@ -22,7 +22,7 @@ class DataIterator implements \Iterator
     /**
      * The dataobject to iterate.
      *
-     * @type    \Octris\Core\Db\Type\SubObject
+     * @type    \Octris\Db\Type\SubObject
      */
     protected $data;
 
@@ -43,9 +43,9 @@ class DataIterator implements \Iterator
     /**
      * Constructor.
      *
-     * @parem   \Octris\Core\Db\Type\SubObject    $dataobject         The dataobject to iterate.
+     * @parem   \Octris\Db\Type\SubObject    $dataobject         The dataobject to iterate.
      */
-    public function __construct(\Octris\Core\Db\Type\SubObject $dataobject)
+    public function __construct(\Octris\Db\Type\SubObject $dataobject)
     {
         $this->data = $dataobject;
         $this->keys = $dataobject->getKeys();

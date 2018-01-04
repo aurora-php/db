@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the 'octris/core' package.
+ * This file is part of the 'octris/db' package.
  *
  * (c) Harald Lapp <harald@octris.org>
  *
@@ -9,12 +9,12 @@
  * file that was distributed with this source code.
  */
 
-namespace Octris\Core\Db\Type;
+namespace Octris\Db\Type;
 
 /**
  * Common data object.
  *
- * @copyright   copyright (c) 2012-2014 by Harald Lapp
+ * @copyright   copyright (c) 2012-2018 by Harald Lapp
  * @author      Harald Lapp <harald@octris.org>
  */
 class SubObject implements \ArrayAccess, \Countable, \IteratorAggregate
@@ -29,7 +29,7 @@ class SubObject implements \ArrayAccess, \Countable, \IteratorAggregate
     /**
      * Reference to dataobject the subobject belongs to.
      *
-     * @type    \Octris\Core\Db\Type\DataObject
+     * @type    \Octris\Db\Type\DataObject
      */
     protected $dataobject;
 
@@ -37,9 +37,9 @@ class SubObject implements \ArrayAccess, \Countable, \IteratorAggregate
      * Constructor.
      *
      * @param   array                               $data           Data to initialize object with.
-     * @param   \Octris\Core\Db\Type\DataObject     $dataobject     DataObject the subobject is part of.
+     * @param   \Octris\Db\Type\DataObject          $dataobject     DataObject the subobject is part of.
      */
-    public function __construct(array $data, \Octris\Core\Db\Type\DataObject $dataobject)
+    public function __construct(array $data, \Octris\Db\Type\DataObject $dataobject)
     {
         $this->dataobject = $dataobject;
 
@@ -171,10 +171,10 @@ class SubObject implements \ArrayAccess, \Countable, \IteratorAggregate
     /**
      * Return iterator to iterate over object data.
      *
-     * @return  \Octris\Core\Db\Device\Riak\DataIterator        Instance of iterator.
+     * @return  \Octris\Db\Device\Riak\DataIterator        Instance of iterator.
      */
     public function getIterator()
     {
-        return new \Octris\Core\Db\Type\RecursiveDataIterator(clone($this));
+        return new \Octris\Db\Type\RecursiveDataIterator(clone($this));
     }
 }

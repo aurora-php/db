@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the 'octris/core' package.
+ * This file is part of the 'octris/db' package.
  *
  * (c) Harald Lapp <harald@octris.org>
  *
@@ -9,12 +9,12 @@
  * file that was distributed with this source code.
  */
 
-namespace Octris\Core\Db\Type;
+namespace Octris\Db\Type;
 
 /**
  * Link reference.
  *
- * @copyright   copyright (c) 2012-2014 by Harald Lapp
+ * @copyright   copyright (c) 2012-2018 by Harald Lapp
  * @author      Harald Lapp <harald@octris.org>
  *
  * @todo        Allow cross-device links (riak -> mysql, etc.)?

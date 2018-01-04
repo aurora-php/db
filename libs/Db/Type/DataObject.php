@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the 'octris/core' package.
+ * This file is part of the 'octris/db' package.
  *
  * (c) Harald Lapp <harald@octris.org>
  *
@@ -9,20 +9,20 @@
  * file that was distributed with this source code.
  */
 
-namespace Octris\Core\Db\Type;
+namespace Octris\Db\Type;
 
 /**
  * Common data object.
  *
- * @copyright   copyright (c) 2012-2014 by Harald Lapp
+ * @copyright   copyright (c) 2012-2018 by Harald Lapp
  * @author      Harald Lapp <harald@octris.org>
  */
-abstract class DataObject extends \Octris\Core\Db\Type\SubObject implements \JsonSerializable
+abstract class DataObject extends \Octris\Db\Type\SubObject implements \JsonSerializable
 {
     /**
      * Instance of database device responsable for connections.
      *
-     * @type    \Octris\Core\Db\Device
+     * @type    \Octris\Db\Device
      */
     protected $device;
 
@@ -43,11 +43,11 @@ abstract class DataObject extends \Octris\Core\Db\Type\SubObject implements \Jso
     /**
      * Constructor.
      *
-     * @param   \Octris\Core\Db\Device      $device         Device the connection belongs to.
+     * @param   \Octris\Db\Device               $device         Device the connection belongs to.
      * @param   string                          $collection     Name of collection the dataobject belongs to.
      * @param   array                           $data           Data to initialize dataobject with,
      */
-    public function __construct(\Octris\Core\Db\Device $device, $collection, array $data = array())
+    public function __construct(\Octris\Db\Device $device, $collection, array $data = array())
     {
         $this->device     = $device;
         $this->collection = $collection;
@@ -104,7 +104,7 @@ abstract class DataObject extends \Octris\Core\Db\Type\SubObject implements \Jso
     {
         $return = true;
 
-        $cn = $this->device->getConnection(\Octris\Core\Db::DB_MASTER);
+        $cn = $this->device->getConnection(\Octris\Db::DB_MASTER);
         $cl = $cn->getCollection($this->collection);
 
         if (is_null($this->_id) || (!is_null($new_key) && $this->_id !== $new_key)) {
