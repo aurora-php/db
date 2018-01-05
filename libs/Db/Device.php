@@ -72,16 +72,16 @@ abstract class Device
     /**
      * Create a new database connection for specified configuration options.
      *
-     * @param   array                       $options        Host configuration options.
-     * @return  \Octris\Db\Device\IConnection               Connection to a database.
+     * @param   array                               $options        Host configuration options.
+     * @return  \Octris\Db\Device\ConnectionInterface               Connection to a database.
      */
     abstract protected function createConnection(array $options);
 
     /**
      * Return a database connection of specified type.
      *
-     * @param   string                      $type           Optional type of connection.
-     * @return  \Octris\Db\Device\IConnection               Connection to a database.
+     * @param   string                              $type           Optional type of connection.
+     * @return  \Octris\Db\Device\ConnectionInterface               Connection to a database.
      */
     public function getConnection($type = \Octris\Db::DB_MASTER)
     {
@@ -98,8 +98,8 @@ abstract class Device
 
                 $cn = $this->createConnection($this->hosts[$type][0]);
 
-                if (!($cn instanceof \Octris\Db\Device\IConnection)) {
-                    throw new \Exception('connection handler needs to implement interface "\Octris\Db\Device\IConnection"');
+                if (!($cn instanceof \Octris\Db\Device\ConnectionInterface)) {
+                    throw new \Exception('connection handler needs to implement interface "\Octris\Db\Device\ConnectionInterface"');
                 }
             }
 
@@ -112,9 +112,9 @@ abstract class Device
     /**
      * Release a connection, push it back into the pool.
      *
-     * @param   \Octris\Db\Device\IConnection   $cn     Connection to release to pool.
+     * @param   \Octris\Db\Device\ConnectionInterface   $cn     Connection to release to pool.
      */
-    public function release(\Octris\Db\Device\IConnection $cn)
+    public function release(\Octris\Db\Device\ConnectionInterface $cn)
     {
         $hash = spl_object_hash($cn);
 
