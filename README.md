@@ -1,3 +1,3 @@
-# Database layer
+# Octris database component base library
 
 ...

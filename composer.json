@@ -1,6 +1,6 @@
 {
     "name": "octris/db",
-    "description": "Database layer.",
+    "description": "Octris database component.",
     "type": "library",
     "license": "BSD-3-Clause",
     "homepage": "https://github.com/octris/db",
