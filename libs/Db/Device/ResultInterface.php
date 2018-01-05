@@ -17,6 +17,6 @@ namespace Octris\Db\Device;
  * @copyright   copyright (c) 2016-2018 by Harald Lapp
  * @author      Harald Lapp <harald@octris.org>
  */
-interface IResult extends \Iterator, \Countable
+interface ResultInterface extends \Iterator, \Countable
 {
 }

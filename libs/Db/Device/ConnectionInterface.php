@@ -17,7 +17,7 @@ namespace Octris\Db\Device;
  * @copyright   copyright (c) 2012-2018 by Harald Lapp
  * @author      Harald Lapp <harald@octris.org>
  */
-interface IConnection
+interface ConnectionInterface
 {
     /**
      * Release connection.
