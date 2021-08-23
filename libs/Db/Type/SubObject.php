@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the 'octris/db' package.
  *
@@ -14,7 +16,7 @@ namespace Octris\Db\Type;
 /**
  * Common data object.
  *
- * @copyright   copyright (c) 2012-2018 by Harald Lapp
+ * @copyright   copyright (c) 2012-present by Harald Lapp
  * @author      Harald Lapp <harald@octris.org>
  */
 class SubObject implements \ArrayAccess, \Countable, \IteratorAggregate
@@ -171,7 +173,7 @@ class SubObject implements \ArrayAccess, \Countable, \IteratorAggregate
     /**
      * Return iterator to iterate over object data.
      *
-     * @return  \Octris\Db\Device\Riak\DataIterator        Instance of iterator.
+     * @return  \Octris\Db\Type\RecursiveDataIterator   Instance of iterator.
      */
     public function getIterator()
     {

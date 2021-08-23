@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the 'octris/db' package.
  *
@@ -14,7 +16,7 @@ namespace Octris\Db\Type;
 /**
  * Iterator for recursive iterating data objects of query results
  *
- * @copyright   copyright (c) 2012-2018 by Harald Lapp
+ * @copyright   copyright (c) 2012-present by Harald Lapp
  * @author      Harald Lapp <harald@octris.org>
  */
 class RecursiveDataIterator extends \Octris\Db\Type\DataIterator implements \RecursiveIterator
