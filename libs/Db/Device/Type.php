@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the 'octris/db' package.
  *
@@ -9,20 +11,20 @@
  * file that was distributed with this source code.
  */
 
-namespace Octris;
+namespace Octris\Db\Device;
 
 /**
- * Core database class.
+ * Device types.
  *
- * @copyright   copyright (c) 2012-2018 by Harald Lapp
+ * @copyright   copyright (c) 2021-present by Harald Lapp
  * @author      Harald Lapp <harald@octris.org>
  */
-class Db
-{
-    /**
-     * Types of database connections.
-     */
-    const DB_MASTER = 'master';
-    const DB_SLAVE  = 'slave';
-    /**/
+enum Type: string {
+    case MASTER = 'master';
+    case SLAVE = 'slave';
+
+    public function isMaster(): bool
+    {
+        return ($this == self::MASTER);
+    }
 }
